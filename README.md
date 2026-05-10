@@ -1,9 +1,21 @@
-# JHW_ARCHIVE
-Webpage created from the 1967 archive of the IMB mainframe dot-matrix printer character programming physical volume. The John H. Weis archive appears to preserve a working IBM System/360-era programming and printer-art collection. It includes handwritten operating notes, IBM utility documentation, hexadecimal/object listings, The John H. Weis archive appears to preserve a working IBM System/360-era programming and printer-art collection. It
-includes handwritten operating notes, IBM utility documentation, hexadecimal/object listings, EBCDIC/Hollerith references,
-flowcharts, tape-to-printer instructions, and multiple examples of line-printer art.
-Its significance comes from the way process and output survive together. The pages do not merely show vintage pictures; they
-document how pictures were converted into machine-readable data and rendered through printers, cards, tapes, fixed-width
-characters, and ink impact.
-For museum interpretation, the archive can be framed as systems-programming evidence and as early computing folk art:
-creative visual work made within the social and technical culture of the machine room.
+# John H. Weis Archive Website
+
+Static website for the John H. Weis Archive.
+
+## Deploy on AWS Amplify
+
+1. Upload all files in this folder to the root of the GitHub repository.
+2. In AWS Amplify, connect the repository.
+3. Select the `main` branch.
+4. Use the included `amplify.yml`.
+5. Save and deploy.
+
+## Included
+
+- `index.html` - homepage
+- `gallery.html` - artifact gallery
+- `timeline.html` - timeline
+- `technical.html` - technical analysis
+- `provenance.html` - provenance page
+- `downloads/John_H_Weis_Final_Museum_Technical_Art_Report.pdf` - full report PDF
+- `assets/images/` - rendered artifact preview images
