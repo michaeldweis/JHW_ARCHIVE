@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | John H. Weis Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">JHW Archive</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="technical.html">Technical</a>
+      <a href="provenance.html">Provenance</a>
+      <a href="downloads/John_H_Weis_Final_Museum_Technical_Art_Report.pdf">PDF Report</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="kicker">Artifact Gallery</div>
+  <h1>Archive Image Gallery</h1>
+  <p class="lead">Forty-five artifact pages rendered from the museum report. Select an image to open the full preview.</p>
+  <div class="gallery-controls">
+    <input id="search" type="search" placeholder="Search artifacts: Edith, Snoopy, Hex, Madonna, Bell...">
+  </div>
+  <div id="gallery" class="gallery"></div>
+</section>
+</main>
+
+<footer>
+  <div class="inner">
+    <strong>John H. Weis Archive</strong><br>
+    Static archive website prepared for museum, heritage, and valuation review.
+  </div>
+</footer>
+
+<script>
+const items = [
+  {
+    "num": 1,
+    "title": "Large folded printer-art output",
+    "caption": "High-density line-printer picture using repeated characters. Stored picture data determined which columns received visible characters; dense clusters created darker tonal fields.",
+    "image": "artifact-01.jpg"
+  },
+  {
+    "num": 2,
+    "title": "Edith demo, program listing plus image",
+    "caption": "Tape-to-printer demonstration run with code/control lines, printer routine setup, and character-matrix output.",
+    "image": "artifact-02.jpg"
+  },
+  {
+    "num": 3,
+    "title": "Edith warning output",
+    "caption": "Line-printer figure with humorous text, combining fixed text with a plotted image matrix.",
+    "image": "artifact-03.jpg"
+  },
+  {
+    "num": 4,
+    "title": "Edith apology output",
+    "caption": "Combined text-and-image output presenting the machine as a personality or office demo feature.",
+    "image": "artifact-04.jpg"
+  },
+  {
+    "num": 5,
+    "title": "Edith close-up",
+    "caption": "Dense marks and negative space create ink-based cross-shading and darker regions.",
+    "image": "artifact-05.jpg"
+  },
+  {
+    "num": 6,
+    "title": "Edith full figure and footer",
+    "caption": "Footer identifies Edith as an optional computer feature; likely printed from stored coordinates or raster rows.",
+    "image": "artifact-06.jpg"
+  },
+  {
+    "num": 7,
+    "title": "Handwritten Edith demo instructions",
+    "caption": "Key technical page describing the Edith picture, tape-to-printer program, card changes, and loading procedure.",
+    "image": "artifact-07.jpg"
+  },
+  {
+    "num": 8,
+    "title": "Hang-On Snoopy output",
+    "caption": "Peanuts/Snoopy line-printer image with title lettering, likely from a fixed character-position list or matrix.",
+    "image": "artifact-08.jpg"
+  },
+  {
+    "num": 9,
+    "title": "Hang-On Snoopy instructions",
+    "caption": "Setup notes for modified printer-program use, unit addresses, and data-deck structure.",
+    "image": "artifact-09.jpg"
+  },
+  {
+    "num": 10,
+    "title": "Hex-to-Hollerith translation table",
+    "caption": "Encoding reference linking hexadecimal values to Hollerith punch conventions.",
+    "image": "artifact-10.jpg"
+  },
+  {
+    "num": 11,
+    "title": "Large portrait/slogan printer art",
+    "caption": "Large folded image with text slogans and dense output fields.",
+    "image": "artifact-11.jpg"
+  },
+  {
+    "num": 12,
+    "title": "Special character plus-sign data deck",
+    "caption": "Small bitmap/font construction page showing glyph encoding as row patterns.",
+    "image": "artifact-12.jpg"
+  },
+  {
+    "num": 13,
+    "title": "Seated figure with multiple symbols",
+    "caption": "Strong art-tech page using S, punctuation, and repeated marks as tonal areas.",
+    "image": "artifact-13.jpg"
+  },
+  {
+    "num": 14,
+    "title": "Our Group demo notes",
+    "caption": "Notes for a tape/list containing Charlie, Linus, Schroeder, Snoopy, Lucy, and Frieda.",
+    "image": "artifact-14.jpg"
+  },
+  {
+    "num": 15,
+    "title": "Charlie Brown output",
+    "caption": "Peanuts character rendered with line-printer marks.",
+    "image": "artifact-15.jpg"
+  },
+  {
+    "num": 16,
+    "title": "Peanuts group scene",
+    "caption": "Multi-character printer art requiring careful row and column alignment.",
+    "image": "artifact-16.jpg"
+  },
+  {
+    "num": 17,
+    "title": "Snoopy horizontal output",
+    "caption": "Snoopy figure likely printed from outline/fill coordinates or a row-wise bitmap.",
+    "image": "artifact-17.jpg"
+  },
+  {
+    "num": 18,
+    "title": "Lucy output",
+    "caption": "Lucy rendered with dense marks and recognizable styling.",
+    "image": "artifact-18.jpg"
+  },
+  {
+    "num": 19,
+    "title": "Peanuts image detail",
+    "caption": "Related Peanuts image from the same demonstration set.",
+    "image": "artifact-19.jpg"
+  },
+  {
+    "num": 20,
+    "title": "Frieda output with annotation",
+    "caption": "Frieda image from the Peanuts group; annotation identifies the subject.",
+    "image": "artifact-20.jpg"
+  },
+  {
+    "num": 21,
+    "title": "Our Group / Charlie tape-to-printer header",
+    "caption": "Program header evidence for a named tape-to-printer run.",
+    "image": "artifact-21.jpg"
+  },
+  {
+    "num": 22,
+    "title": "Seasons Greetings Bell notes",
+    "caption": "Handwritten notes for 70+70 to 140 picture-list format and combined program/data deck.",
+    "image": "artifact-22.jpg"
+  },
+  {
+    "num": 23,
+    "title": "Snoopy demo picture notes",
+    "caption": "Notes for Snoopy doghouse tape, self-printing program, card modifications, and output format.",
+    "image": "artifact-23.jpg"
+  },
+  {
+    "num": 24,
+    "title": "Train demo picture notes",
+    "caption": "Seasonal train-picture instructions using a 70 to 70 data format.",
+    "image": "artifact-24.jpg"
+  },
+  {
+    "num": 25,
+    "title": "Utility catalog / tape-file listing",
+    "caption": "Printed program inventory including deck generation, assembler, card print, EBCDIC-to-hex, and demo runs.",
+    "image": "artifact-25.jpg"
+  },
+  {
+    "num": 26,
+    "title": "All Possible Series flowchart",
+    "caption": "Algorithm design page for a combinations or series routine.",
+    "image": "artifact-26.jpg"
+  },
+  {
+    "num": 27,
+    "title": "All Possible Combinations routine",
+    "caption": "Detailed flowchart using registers and comparisons.",
+    "image": "artifact-27.jpg"
+  },
+  {
+    "num": 28,
+    "title": "RX versus RR branching notes",
+    "caption": "IBM assembly notes explaining branch instruction forms.",
+    "image": "artifact-28.jpg"
+  },
+  {
+    "num": 29,
+    "title": "Coding / plotting layout form",
+    "caption": "Graph/layout sheet likely used to plan rows, columns, card punches, or character placement.",
+    "image": "artifact-29.jpg"
+  },
+  {
+    "num": 30,
+    "title": "Alfred E. Neuman picture notes",
+    "caption": "Instructions for Alfred E. Neuman picture in 70+70 to 140 format.",
+    "image": "artifact-30.jpg"
+  },
+  {
+    "num": 31,
+    "title": "Alfred E. Neuman tape-to-printer run",
+    "caption": "Printed run header and rows of Z characters.",
+    "image": "artifact-31.jpg"
+  },
+  {
+    "num": 32,
+    "title": "Alfred E. Neuman output",
+    "caption": "Large face/figure created from repeated Z marks.",
+    "image": "artifact-32.jpg"
+  },
+  {
+    "num": 33,
+    "title": "Reindeer picture notes",
+    "caption": "Handwritten notes for reindeer and sleigh picture.",
+    "image": "artifact-33.jpg"
+  },
+  {
+    "num": 34,
+    "title": "Reindeer program header",
+    "caption": "Header for reindeer and sleigh demo picture, tape to printer.",
+    "image": "artifact-34.jpg"
+  },
+  {
+    "num": 35,
+    "title": "Reindeer / sleigh output detail",
+    "caption": "Seasonal character-art output likely printed from fixed row/column data.",
+    "image": "artifact-35.jpg"
+  },
+  {
+    "num": 36,
+    "title": "Seasons Greetings Bell output fragment",
+    "caption": "Holiday bell image using varied characters as tonal strokes.",
+    "image": "artifact-36.jpg"
+  },
+  {
+    "num": 37,
+    "title": "Seasons Greetings Bell notes / alternate view",
+    "caption": "Notes documenting card modifications and output formatting for the bell routine.",
+    "image": "artifact-37.jpg"
+  },
+  {
+    "num": 38,
+    "title": "Seasons Greetings Bell printed listing",
+    "caption": "Program listing or run output with visible image rows.",
+    "image": "artifact-38.jpg"
+  },
+  {
+    "num": 39,
+    "title": "Tape-file listing / alternate view",
+    "caption": "Additional utility-catalog view with dates, program identifiers, and descriptions.",
+    "image": "artifact-39.jpg"
+  },
+  {
+    "num": 40,
+    "title": "I/O Status Sequences notes",
+    "caption": "Handwritten operational notes for reader/punch status and channel/end conditions.",
+    "image": "artifact-40.jpg"
+  },
+  {
+    "num": 41,
+    "title": "System/360 DEBE Utilities documentation",
+    "caption": "IBM utility documentation dated February 24, 1966.",
+    "image": "artifact-41.jpg"
+  },
+  {
+    "num": 42,
+    "title": "IBM utility hex/object listing",
+    "caption": "Dense hexadecimal/object-program style listing.",
+    "image": "artifact-42.jpg"
+  },
+  {
+    "num": 43,
+    "title": "Edith B run and output",
+    "caption": "Run number two Edith tape-to-printer page.",
+    "image": "artifact-43.jpg"
+  },
+  {
+    "num": 44,
+    "title": "Madonna demo notes",
+    "caption": "Handwritten notes for Madonna and Child demo picture, referencing 72 by 72 bit format.",
+    "image": "artifact-44.jpg"
+  },
+  {
+    "num": 45,
+    "title": "Madonna demo output",
+    "caption": "Madonna image using multiple characters and repeated marks for tonal variation.",
+    "image": "artifact-45.jpg"
+  }
+];
+
+function renderGallery(filter = "") {
+  const root = document.getElementById("gallery");
+  const q = filter.trim().toLowerCase();
+  root.innerHTML = "";
+
+  items.filter(item => {
+    const hay = [item.title, item.caption, String(item.num)].join(" ").toLowerCase();
+    return !q || hay.includes(q);
+  }).forEach(item => {
+    const card = document.createElement("article");
+    card.className = "artifact";
+    card.innerHTML = `
+      <a href="${item.image}" target="_blank" rel="noopener">
+        <img src="${item.image}" alt="Archive image ${item.num}: ${item.title}">
+        <div class="artifact-body">
+          <div class="artifact-title">Image ${item.num}: ${item.title}</div>
+          <small>${item.image}</small>
+          <p class="caption">${item.caption}</p>
+        </div>
+      </a>`;
+    root.appendChild(card);
+  });
+}
+
+renderGallery();
+document.getElementById("search").addEventListener("input", e => renderGallery(e.target.value));
+</script>
+</body>
+</html>
